@@ -29,10 +29,14 @@
         colorMajorTicks: '#e25213',
         borderInnerWidth: 2,
         ticksWidth: 3,
-        highlights: [],
+        highlights: [
+            { "from": 20, "to": 100, "color": "rgba(204,204,204, .7)" },
+            { "from": 100, "to": 120, "color": "rgba(255, 83, 19, .7)" }
+        ],
+        highlightsWidth: 10,
         minorTicks: 4,
         strokeTicks: false,
-        units: "°C",
+        units: "speed km/h",
         colorPlate: 'white',
         colorNumbers: 'black',
         needleStart: 10,
@@ -60,7 +64,16 @@
         fontValueStyle: 'italic',
         colorValueText: 'white',
         colorValueBoxBackground: 'black',
-        colorBorderShadow: 0
+        colorBorderShadow: 0,
+        fontNumbersWeight: 700,
+        fontNumbersStyle: 'italic',
+        fontUnitsWeight: 700,
+        fontUnitsStyle: 'italic',
+        fontUnitsSize: 18,
+        colorUnits: 'black',
+        barStrokeWidth: 1,
+        colorBarStroke: '#e25213',
+        numbersMargin: 5
     }).draw();
 </script>
 </body>
