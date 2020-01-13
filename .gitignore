@@ -12,3 +12,5 @@ complexity/
 *es6.js
 test/cjs/bundle.js
 package-lock.json
+gauge.min.js
+gauge.min.js.map

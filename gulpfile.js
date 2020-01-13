@@ -31,7 +31,6 @@ const replace = require('gulp-replace');
 const babel = require('gulp-babel');
 const fsc = require('fs-cli');
 const semver = require('semver');
-const inject = require('gulp-inject-string');
 const version = require('./package.json').version;
 const plato = require('gulp-plato');
 
@@ -99,6 +98,9 @@ function wrap(stream) {
 }
 
 function es5transpile(type = 'all', withSourceMaps = true, resolve = () => {}) {
+    return wrap(es6concat(type)
+        .pipe(rename('gauge.min.js')));
+
     let stream = wrap(es6concat(type)
         .pipe(rename('gauge.es5.js'))
         .pipe(babel({
@@ -320,11 +322,11 @@ gulp.task('build:es5', ['clean'], done => {
                     'assets/js/gauge.min.js',
                     fs.readFileSync('gauge.min.js')
                 );
-                fs.writeFileSync(
+                /* fs.writeFileSync(
                     '../canvas-gauges-pages/' +
                     'assets/js/gauge.min.js.map',
                     fs.readFileSync('gauge.min.js.map')
-                );
+                ); */
             }
 
             done();
