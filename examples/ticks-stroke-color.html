@@ -11,40 +11,57 @@
 </head>
 <body>
 
-<button onclick="animateGauges()">Animate</button>
+<canvas id="canvas"></canvas>
 
 <hr>
 
-<canvas data-type="radial-gauge"
-        data-major-ticks="950, 960, 970, 980, 990, 1000, 1010, 1020, 1030, 1040, 1050"
-        data-type="radial-gauge"
-        data-title="Barometer"
-        data-units="mBar"
-        data-width="200"
-        data-height="200"
-        data-value-int="0"
-        data-value-dec="0"
-        data-width="200"
-        data-height="200"
-        data-min-value="950"
-        data-max-value="1050"
-        data-highlights="false"
-        data-color-stroke-ticks="#f00"
-></canvas>
-
-<script async src="../gauge.min.js"></script>
+<script src="../gauge.min.js"></script>
 <script>
-    var timers = [];
-
-    function animateGauges() {
-        document.gauges.forEach(function(gauge) {
-            timers.push(setInterval(function() {
-                gauge.value = Math.random() *
-                    (gauge.options.maxValue - gauge.options.minValue) +
-                    gauge.options.minValue;
-            }, gauge.animation.duration + 50));
-        });
-    }
+    var gauge = new RadialGauge({
+        renderTo: document.getElementById('canvas'),
+        borders: false,
+        width: 400,
+        height: 400,
+        minValue: 20,
+        maxValue: 120,
+        value: 75,
+        majorTicks: [20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120],
+        colorMajorTicks: '#e25213',
+        borderInnerWidth: 2,
+        ticksWidth: 3,
+        highlights: [],
+        minorTicks: 4,
+        strokeTicks: false,
+        units: "°C",
+        colorPlate: 'white',
+        colorNumbers: 'black',
+        needleStart: 10,
+        needleShadow: false,
+        colorNeedle: '#e25213',
+        colorNeedleEnd: '#e25213',
+        needleType: "arrow",
+        needleWidth: 3,
+        needleCircleSize: 15,
+        needleCircleOuter: true,
+        colorNeedleCircleOuter: 'black',
+        colorNeedleCircleOuterEnd: 'black',
+        needleCircleInner: false,
+        animateOnInit: true,
+        animationDuration: 50,
+        animationRule: "linear",
+        valueBoxBorderRadius: [20, 20, 5, 5],
+        valueBoxWidth: 5,
+        valueInt: 1,
+        valueDec: 1,
+        valueBoxStroke: 1,
+        colorValueBoxRect: '#e25213',
+        colorValueBoxRectEnd: '#e25213',
+        fontValueWeight: 700,
+        fontValueStyle: 'italic',
+        colorValueText: 'white',
+        colorValueBoxBackground: 'black',
+        colorBorderShadow: 0
+    }).draw();
 </script>
 </body>
 </html>
